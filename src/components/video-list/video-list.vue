@@ -20,13 +20,13 @@
               <v-col cols="12" md="6">
                 <v-card>
                   <v-card-title>
-                    <h3>Tytuł: </h3> {{ video.title }}
+                    <h3>Tytuł: {{ video.title }}</h3>
                   </v-card-title>
                   <v-card-subtitle>
-                    <h4>Czas Trwania: </h4> {{ video.duration }} sekund
+                    <h4>długość:  {{ video.duration }} sekund</h4>
                   </v-card-subtitle>
                   <v-card-text>
-                    <span class="font-italic">Opis: </span>{{ video.description }}
+                    <span class="font-italic"><span class="font-weight-bold">Opis: </span> {{ video.description }}</span>
                   </v-card-text>
                   <v-card-actions>
                     <v-btn >Status: {{ videoProgress }}</v-btn>
@@ -88,6 +88,7 @@ export default {
           videoEl.src = video.link;
           videoEl.onloadedmetadata = () => {
             video.duration = Math.round(videoEl.duration);
+            localStorage.setItem('videos', JSON.stringify(this.videos));
           }
         })
       });
